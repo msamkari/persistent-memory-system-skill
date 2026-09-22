@@ -1,0 +1,74 @@
+{
+  "skill_name": "persistent-memory-system",
+  "evals": [
+    {
+      "id": 1,
+      "name": "fresh-start-new-project",
+      "prompt": "مرحباً! أبي أسوي نظام يخلي Claude يتذكر تفاصيل مشروعي بين كل محادثة وحدة، بدل ما أعيد شرح كل شي من الصفر كل مرة. مشروعي عبارة عن متجر أونلاين صغير لبيع شموع معطرة يدوية الصنع، اسمه Candle Loft. أبدأ فيه من الصفر الحين، ما عندي أي نظام توثيق سابق له.",
+      "expected_output": "Claude runs the skill's step-zero check, finds nothing pre-existing, asks the three founding questions (language, storage tool actually available, file-naming language) instead of assuming, then creates a MDs/System_Current_MD (+ empty System_Previous_MDs) structure for Candle Loft with plain-text-friendly current-state files (no tables, no heavy Markdown).",
+      "files": [],
+      "expectations": [
+        "Claude asked the user which language they prefer for the memory content before creating any files, rather than assuming.",
+        "Claude checked which storage tools were actually visible in its own tool list before asking the user to choose, rather than assuming Dropbox by default.",
+        "Claude asked the user explicitly about file/folder naming language rather than silently defaulting to English without asking.",
+        "Claude created a MDs/System_Current_MD folder (with a System_Previous_MDs sibling) for the Candle Loft project inside the simulated storage path, not somewhere unrelated.",
+        "The created current-state files avoid Markdown tables and heavy multi-level Markdown headers, consistent with the skill's formatting rule.",
+        "Claude explicitly checked for or stated there was no pre-existing memory system before starting fresh (step zero was not silently skipped)."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "continue-existing-no-explicit-reminder",
+      "prompt": "[This is an ongoing project called Candle Loft. A persistent memory system for it already exists in the connected simulated storage tool, at the path given below. No one has reminded you to read it.]\n\nبسرعة، شنو كان قرارنا بخصوص مورد التغليف؟ ناسي التفاصيل بالضبط.",
+      "expected_output": "Without being told to, Claude reads the full System_Current_MD files first, then answers using the real recorded decision (KraftBox, 2.5 SAR per box, decided 2026-08-20) rather than a generic or invented answer.",
+      "files": ["fixtures/candle-loft-existing"],
+      "expectations": [
+        "Claude read the full System_Current_MD files before answering, without being explicitly told to read them in this message.",
+        "Claude's answer correctly names KraftBox and the 2.5 SAR per box price as the packaging supplier decision, matching the fixture content exactly.",
+        "Claude did not ask the user to re-explain context that was already available in the memory files.",
+        "Claude did not fabricate a different supplier name or price."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "log-new-decision-and-verify-archive",
+      "prompt": "[This is an ongoing project called Candle Loft. A persistent memory system for it already exists in the connected simulated storage tool, at the path given below.]\n\nقررنا نرفع سعر الشمعة الكبيرة من 25 لـ30 ريال ابتداءً من الشهر الجاي، سجّل هذا القرار بالنظام.",
+      "expected_output": "Claude records the price-increase decision, archiving the old version of whichever current-state file it updates (moved into System_Previous_MDs/<current-month>/ with today's date appended to the filename, never deleted) before writing a fresh version in System_Current_MD, and verifies the result by re-listing the folders. The decision is also added to the narrative decisions log.",
+      "files": ["fixtures/candle-loft-existing"],
+      "expectations": [
+        "Before overwriting any file, Claude took or referenced a freshness check rather than silently skipping the archiving procedure.",
+        "The pre-update version of 01_Project_Summary.md (or whichever current-state file was changed) was moved into a System_Previous_MDs/YYYY-MM/ subfolder with today's date appended to its filename, not deleted.",
+        "A new file with the original filename (no date suffix) exists in System_Current_MD and its content reflects the new 30 SAR price.",
+        "Claude verified the archive actually happened by re-listing/checking the folders rather than just assuming the move succeeded.",
+        "The new decision was also appended to the narrative decisions-and-lessons log file, not only the summary file."
+      ]
+    },
+    {
+      "id": 4,
+      "name": "audit-and-upgrade-existing-nonconforming-system",
+      "prompt": "[This is an ongoing project called Freelance Writing, using the connected simulated storage tool at the path given below.]\n\nعندي هذا المشروع من سنة وكل ملاحظاتي وقراراتي مجمّعة بملف notes.md وحيد بدون أي تنظيم. أبي أرقّيه لنظام ذاكرة ثابتة منظم زي اللي تسويه عادة، بس مهم لي ما نفقد أي شي قديم بالعملية.",
+      "expected_output": "Claude recognizes notes.md as a pre-existing (informal) memory system during step zero rather than ignoring it, reads it fully, presents a neutral summary of what it found, and asks explicit permission before restructuring it into the new file categories rather than doing the reorganization unprompted. Nothing from the original file is lost.",
+      "files": ["fixtures/freelance-notes-nonconforming"],
+      "expectations": [
+        "Claude detected the pre-existing notes.md as an existing memory/notes system during its step-zero check, rather than building a fresh parallel structure alongside it without acknowledging it.",
+        "Claude read the entire existing notes.md file before proposing any changes.",
+        "Claude presented a neutral summary of what it found in notes.md before making or proposing structural changes.",
+        "Claude asked for explicit confirmation before carrying out structural changes (splitting/reorganizing notes.md into the new file categories) rather than doing this unprompted.",
+        "No content from the original notes.md (client rates, the 2026-03-12 rate-increase decision, the Bright Media pause) was deleted or lost — it was preserved as-is or migrated."
+      ]
+    },
+    {
+      "id": 5,
+      "name": "detect-concurrent-edit-before-overwrite",
+      "prompt": "[This is an ongoing project called Pet Grooming Mobile, using the connected simulated storage tool at the path given below. You already took your one mandatory freshness snapshot at the very start of this session; it is saved at MDs/SESSION_SNAPSHOT_BASELINE.json in the connected storage, and it recorded 01_Project_Summary.md's state as: 'goal + one active neighborhood cart, WhatsApp bookings only, open question about a second cart' with recorded_modified_time 2026-09-10T12:00:00Z.]\n\nحدّث ملخص المشروع (01) وضيف إننا قررنا نضيف عربة تجميل متنقلة ثانية ابتداءً من الشهر الجاي.",
+      "expected_output": "Before overwriting 01_Project_Summary.md, Claude checks the file's real current state against the recorded snapshot, discovers the real file already contains an undisclosed new-customer discount-promo decision that isn't in the snapshot (i.e. another session edited it after the snapshot was taken), stops, flags this explicitly to the user, and proposes merging both changes instead of silently overwriting.",
+      "files": ["fixtures/pet-grooming-existing"],
+      "expectations": [
+        "Before overwriting 01_Project_Summary.md, Claude checked the file's actual current state against the recorded session-start snapshot rather than writing blindly.",
+        "Claude detected that the real file's content/modified time differs from what the snapshot recorded, indicating a concurrent edit by another session, and explicitly flagged this to the user.",
+        "Claude did not silently overwrite and discard the discount-promo sentence already present in the real file.",
+        "Claude proposed re-reading the current file fully and merging both the discount-promo decision and the new second-cart decision, rather than picking one arbitrarily or dropping either."
+      ]
+    }
+  ]
+}
