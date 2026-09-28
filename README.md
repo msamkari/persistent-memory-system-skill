@@ -50,6 +50,8 @@ Upload `SKILL.md` to your Claude account (Settings > Capabilities > Skills > Upl
 
 Source-available under PolyForm Noncommercial 1.0.0. Free for personal and other non-commercial use. See `LICENSE` for the full terms.
 
+Commercial use requires a separate license from the author. To discuss one, open an Issue (please don't post confidential details or personal contact information there; I'll reply with a way to continue privately).
+
 ## Report an Issue / Feedback
 
 Found a bug or have a suggestion? Please open a GitHub Issue in this repository: https://github.com/msamkari/persistent-memory-system-skill/issues
