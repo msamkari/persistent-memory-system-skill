@@ -19,7 +19,7 @@ This repository hosts the source, packaged releases, and test evidence for the P
   - `persistent-memory-system-v7.1.skill` — v7.1 (current version; adds an explicit provenance rule for narrative-log entries — every significant claim must be marked as user-stated, directly verified, or Claude's own inference/recommendation, never recorded as fact when it is only inferred).
 - `reports/` — interactive HTML results viewers (open directly in a browser):
   - `persistent-memory-system-eval-review.html` — v1 results.
-  -   `persistent-memory-system-v2-eval-review.html` — full v2 results (five tasks: description optimization, 19 scenarios, Notion/M365/audit, Dashboard, quality review).
+  - `persistent-memory-system-v2-eval-review.html` — full v2 results (five tasks: description optimization, 19 scenarios, Notion/M365/audit, Dashboard, quality review).
 - `testing-evidence/` — all raw testing evidence (zipped, see `testing-evidence/README.md` for details).
 
 ## Version history
