@@ -20,7 +20,7 @@ This repository hosts the source, packaged releases, and test evidence for the P
 - `reports/` — interactive HTML results viewers (open directly in a browser):
   - `persistent-memory-system-eval-review.html` — v1 results.
   - `persistent-memory-system-v2-eval-review.html` — full v2 results (five tasks: description optimization, 19 scenarios, Notion/M365/audit, Dashboard, quality review).
-- `testing-evidence/` — all raw testing evidence (zipped, see `testing-evidence/README.md` for details).
+  - -testing-evidence/` — all raw testing evidence (zipped, see `testing-evidence/README.md` for details).
 
 ## Version history
 
