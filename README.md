@@ -2,6 +2,8 @@
 
 A persistent, external memory system for any long-running project — freelance work, a small business, a negotiation, research, or ongoing family tracking. This Skill has Claude build and run a durable reference stored in a real file service (Dropbox, Google Drive, Microsoft 365, or Notion with adaptation), with a mandatory full read at the start of every session and complete archiving — never deletion.
 
+*Open the folder and read exactly what Claude will read next session, no black box.*
+
 This repository hosts the source, packaged releases, and test evidence for the Persistent Memory System Skill, developed and maintained by Mohammad Samkari.
 
 ## Repository contents
@@ -9,7 +11,7 @@ This repository hosts the source, packaged releases, and test evidence for the P
 - `SKILL.md` — the current version (v7.1) of the Skill. This is the file that actually gets uploaded to Claude (Settings > Capabilities > Skills).
 - `evals/evals.json` — definition of the five original scenarios (v1) used in the Skill's first test round.
 - `releases/` — packaged Skill versions (`.skill`, zip files ready for direct upload):
-  - `persistent-memory-system.skill` — v1 (first version, 5-scenario test: 100% vs. 50.3%).
+  - `persistent-memory-system.skill` — v1 (first version, 5-scenario test: 100% vs. 50.3% in the 5 scenarios we tested (10 agent runs); see Version history below for the baseline caveat).
   - `persistent-memory-system-v2.skill` — v2 (after a comprehensive improvement round: 19 scenarios, 100%, plus Notion/M365/messy-folder audit/Dashboard).
   - `persistent-memory-system-v3.skill` — v3 (after a deep adversarial test round: local storage support, fixes for file-disappearance/archive-name-collision/check-before-move gap, sensitive-data hardening).
   - `persistent-memory-system-v4.skill` — v4 (one design clarification: the "current file status" line in the header of an append-only narrative file is a live summary updatable through normal archiving plus explicit approval, not a closed historical entry).
@@ -24,7 +26,7 @@ This repository hosts the source, packaged releases, and test evidence for the P
 
 ## Version history
 
-**v1** (2026-09-16): First build, tested across 5 scenarios via skill-creator (parallel subagents, with_skill vs. without_skill). Result: 100% vs. 50.3%. Actually installed on Mohammad's account.
+**v1** (2026-09-16): First build, tested across 5 scenarios via skill-creator (parallel subagents, with_skill vs. without_skill). Result: 100% vs. 50.3%, in the 5 scenarios we tested (10 agent runs). Caveat: the without_skill baseline runs still inherited the project's existing context (prior conversation history and files) rather than starting from a blank slate, so part of the gap may reflect that inherited context rather than the Skill alone. Actually installed on Mohammad's account.
 
 **v2** (2026-09-18): A comprehensive improvement round with five tasks: (1) An attempt to improve the trigger description via the automated skill-creator tool — a real environment constraint was discovered (the tool registers the file as a slash command rather than a true skill in this version of Claude Code, producing 0% recall regardless of the description); this was documented clearly, and a workaround (direct subagent judgment) was used to manually craft an improved description. (2) Expanded testing to 19 scenarios (9 training + 6 hidden test + 4 special cases), 100% success verified directly against the files. (3) Testing of Notion, Microsoft 365, and a real messy-folder audit — detailed in the report. (4) The first real test of a centralized multi-project Dashboard. (5) A quality review against official skill-creator standards (no restructuring needed at this time).
 
@@ -43,6 +45,10 @@ This repository hosts the source, packaged releases, and test evidence for the P
 ## How to use this Skill
 
 Upload `SKILL.md` to your Claude account (Settings > Capabilities > Skills > Upload), or use the ready `.skill` file from `releases/`. See the "Ready-made example" section at the end of `SKILL.md` for Project-instructions text that makes the mandatory read automatic without needing to remind Claude every session.
+
+## License
+
+Source-available under PolyForm Noncommercial 1.0.0. Free for personal and other non-commercial use. See `LICENSE` for the full terms.
 
 ## Report an Issue / Feedback
 
