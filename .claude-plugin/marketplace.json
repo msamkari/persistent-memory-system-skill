@@ -1,0 +1,12 @@
+{
+  "name": "persistent-memory-marketplace",
+  "owner": { "name": "Mohammad Samkari" },
+  "description": "Persistent Memory System for Claude: durable, archived project memory kept in your own file storage.",
+  "plugins": [
+    {
+      "name": "persistent-memory",
+      "source": "./plugins/persistent-memory",
+      "description": "Build and run a Persistent Memory System for long-running projects so Claude stops asking you to re-explain context."
+    }
+  ]
+}
