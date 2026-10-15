@@ -17,7 +17,7 @@ jobs:
         with: { node-version: "22" }
       - name: Unit tests
         working-directory: plugins/persistent-memory
-        run: node --test tests/doctor.test.mjs tests/lint.test.mjs
+        run: node --test tests/doctor.test.mjs tests/lint.test.mjs tests/gate.test.mjs
       - name: SessionStart hook smoke test
         shell: bash
         working-directory: plugins/persistent-memory

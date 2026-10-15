@@ -54,7 +54,9 @@ for (const x of fixes) say("INFO", `unique fix: ${x.f}: ${x.from} -> ${x.to}`);
 // jobs
 const jobs = path.join(root, "Jobs");
 if (fs.existsSync(jobs)) for (const f of fs.readdirSync(jobs).filter(f => f.endsWith(".md"))) {
-  if (!/STATUS/i.test(fs.readFileSync(path.join(jobs, f), "utf8"))) say("WARN", `Jobs/${f}: no STATUS block`);
+  const jt = fs.readFileSync(path.join(jobs, f), "utf8");
+  if (!/STATUS/i.test(jt)) say("WARN", `Jobs/${f}: no STATUS block`);
+  else if (!/BUDGET|الميزانية|سقف/i.test(jt) && /STATUS[^\n]*\n[^\n]*(IN PROGRESS|قيد|جارٍ|جاري)/i.test(jt)) say("WARN", `Jobs/${f}: active job has no BUDGET line (add e.g. "BUDGET: max 5 USD or 3 rounds; stop and report when reached")`);
 }
 if (apply && fixes.length) {
   const ym = new Date().toISOString().slice(0, 7), ds = new Date().toISOString().slice(0, 10);

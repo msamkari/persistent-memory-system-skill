@@ -26,3 +26,17 @@ test("broken archive link: dry run keeps file, --apply archives then fixes", () 
   assert.ok(arch.some(x => x.includes("prelint")));
 });
 test("missing folder fails closed", () => { assert.equal(run(os.tmpdir() + "/nope-" + Date.now()).status, 1); });
+
+test("active job without BUDGET warns; with BUDGET passes", () => {
+  const mk = (body) => {
+    const d = fs.mkdtempSync(path.join(os.tmpdir(), "lintb-"));
+    fs.mkdirSync(path.join(d, "MDs", "System_Current_MD"), { recursive: true });
+    fs.mkdirSync(path.join(d, "Jobs"));
+    fs.writeFileSync(path.join(d, "Jobs", "j.md"), body);
+    return d;
+  };
+  const run = (d) => spawnSync(process.execPath, [lint, d], { encoding: "utf8" }).stdout;
+  assert.match(run(mk("j\n\nSTATUS:\nIN PROGRESS phase 2\n")), /no BUDGET line/);
+  assert.doesNotMatch(run(mk("j\n\nSTATUS:\nIN PROGRESS phase 2\nBUDGET: max 5 USD\n")), /no BUDGET line/);
+  assert.doesNotMatch(run(mk("j\n\nSTATUS:\nCOMPLETE\n")), /no BUDGET line/);
+});
