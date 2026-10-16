@@ -8,7 +8,7 @@ This repository hosts the source, packaged releases, and test evidence for the P
 
 ## Claude Code plugin (new)
 
-The same Skill is now also available as a plugin named `persistent-memory`, in `plugins/persistent-memory/` (version 0.4.0, Apache-2.0). It bundles the unchanged v8.1 Skill (byte-identical to the root `SKILL.md`) with:
+The same Skill is now also available as a plugin named `persistent-memory`, in `plugins/persistent-memory/` (version 0.4.1, Apache-2.0). It bundles the unchanged v8.1 Skill (byte-identical to the root `SKILL.md`) with:
 
 - a read-only **session-start hook** (Node, cross-platform) that gives Claude a short index of your memory folder (file names and dates only);
 - `memory-doctor` and `memory-lint` — deterministic, fail-closed health and consistency checks for your memory files (`memory-lint --apply` only fixes unique path typos, and archives the old file first);
