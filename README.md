@@ -8,7 +8,7 @@ This repository hosts the source, packaged releases, and test evidence for the P
 
 ## Claude Code plugin (new)
 
-The same Skill is now also available as a plugin named `persistent-memory`, in `plugins/persistent-memory/` (version 0.3.0, Apache-2.0). It bundles the unchanged v8.1 Skill (byte-identical to the root `SKILL.md`) with:
+The same Skill is now also available as a plugin named `persistent-memory`, in `plugins/persistent-memory/` (version 0.4.1, Apache-2.0). It bundles the unchanged v8.1 Skill (byte-identical to the root `SKILL.md`) with:
 
 - a read-only **session-start hook** (Node, cross-platform) that gives Claude a short index of your memory folder (file names and dates only);
 - `memory-doctor` and `memory-lint` — deterministic, fail-closed health and consistency checks for your memory files (`memory-lint --apply` only fixes unique path typos, and archives the old file first);
@@ -22,6 +22,8 @@ Skills work in claude.ai, Cowork and Claude Code; hooks and agents work in Cowor
 /plugin marketplace add msamkari/persistent-memory-system-skill
 /plugin install persistent-memory@persistent-memory-marketplace
 ```
+
+**Requirements:** a Claude subscription, **Git** and **Node.js**. The full step-by-step guide (Windows, macOS, Linux, installing Git and Node.js, auto-update, troubleshooting) is in [`INSTALL.md`](INSTALL.md) — دليل التثبيت التفصيلي بالعربية والإنجليزية.
 
 For claude.ai upload and full details, see [`plugins/persistent-memory/README.md`](plugins/persistent-memory/README.md). The plugin's unit tests run on Linux, Windows and macOS through GitHub Actions (`.github/workflows/plugin-test.yml`).
 
