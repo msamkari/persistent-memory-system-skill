@@ -19,6 +19,8 @@ It contains:
 
 Hooks and agents are ignored in claude.ai chat; the skill works everywhere.
 
+Installation steps (Windows, macOS, Linux, auto-update, troubleshooting): see [`INSTALL.md`](../../INSTALL.md) at the repository root.
+
 ## Install
 
 **Claude Code**
