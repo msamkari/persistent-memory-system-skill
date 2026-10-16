@@ -1,4 +1,4 @@
-# Persistent Memory — Claude plugin (v0.4.0)
+# Persistent Memory — Claude plugin (v0.4.1)
 
 Stop re-explaining your project every session. This plugin packages the **Persistent Memory System** skill (v8.1): Claude reads durable, archived memory files that live in *your own* storage (Dropbox, Drive, M365, Notion), saves before it acts, and never deletes.
 
@@ -18,6 +18,8 @@ It contains:
 | PreToolUse approval gate | Claude Code / Cowork only | Blocks `git commit`/`gh pr` text that carries Co-Authored-By, session links or tool signatures (unless `PMS_ALLOW_TRAILERS=1`, for when you explicitly want them) and asks you before any force push. Decisions are logged when the memory folder is set |
 
 Hooks and agents are ignored in claude.ai chat; the skill works everywhere.
+
+Installation steps (Windows, macOS, Linux, auto-update, troubleshooting): see [`INSTALL.md`](../../INSTALL.md) at the repository root.
 
 ## Install
 
