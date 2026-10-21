@@ -20,7 +20,7 @@ Skills work in claude.ai, Cowork and Claude Code; hooks and agents work in Cowor
 
 ```
 /plugin marketplace add msamkari/persistent-memory-system-skill
-/plugin install persistent-memory@persistent-memory-marketplace
+/plugin install persistent-memory@samkari-plugins
 ```
 
 **Requirements:** a Claude subscription, **Git** and **Node.js**. The full step-by-step guide (Windows, macOS, Linux, installing Git and Node.js, auto-update, troubleshooting) is in [`INSTALL.md`](INSTALL.md) — دليل التثبيت التفصيلي بالعربية والإنجليزية.

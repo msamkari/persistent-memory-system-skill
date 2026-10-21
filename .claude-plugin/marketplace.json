@@ -1,7 +1,7 @@
 {
-  "name": "persistent-memory-marketplace",
+  "name": "samkari-plugins",
   "owner": { "name": "Mohammad Samkari" },
-  "description": "Persistent Memory System for Claude: durable, archived project memory kept in your own file storage.",
+  "description": "Mohammad Samkari's Claude plugins marketplace: a growing collection of plugins and projects.",
   "plugins": [
     {
       "name": "persistent-memory",
