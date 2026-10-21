@@ -26,7 +26,7 @@ Installation steps (Windows, macOS, Linux, auto-update, troubleshooting): see [`
 **Claude Code**
 ```
 /plugin marketplace add msamkari/persistent-memory-system-skill
-/plugin install persistent-memory@persistent-memory-marketplace
+/plugin install persistent-memory@samkari-plugins
 ```
 (The marketplace path depends on the final repo; see the release notes.)
 

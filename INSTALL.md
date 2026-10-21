@@ -132,7 +132,7 @@ Type these inside Claude Code (not in PowerShell/bash), one at a time:
 
 ```
 /plugin marketplace add msamkari/persistent-memory-system-skill
-/plugin install persistent-memory@persistent-memory-marketplace
+/plugin install persistent-memory@samkari-plugins
 ```
 
 - Choose **Install for you (user scope)**: the plugin is then available in every folder.
@@ -146,7 +146,7 @@ Type these inside Claude Code (not in PowerShell/bash), one at a time:
 
 1. Type `/plugin`. / اكتب `/plugin`.
 2. Go to the **Marketplaces** tab (arrow keys). / انتقل إلى تبويب **Marketplaces**.
-3. Select **persistent-memory-marketplace**. / اختر السوق.
+3. Select **samkari-plugins**. / اختر السوق.
 4. Select **Enable auto-update**. / اختر **Enable auto-update**.
 
 When enabled, the screen shows **"Auto-update enabled. Claude Code will automatically update this marketplace and its installed plugins."** and the menu item changes to **Disable auto-update**. Do not press it unless you want to turn updates off.
@@ -159,7 +159,7 @@ Note for maintainers: a new version reaches users when `version` in `plugins/per
 
 ## 6. Verify / التحقق
 
-1. `/plugin` → **Installed**: `persistent-memory @ persistent-memory-marketplace`, Status **Enabled**, with the current version (see `plugin.json`).
+1. `/plugin` → **Installed**: `persistent-memory @ samkari-plugins`, Status **Enabled**, with the current version (see `plugin.json`).
    يجب أن تظهر الإضافة مفعّلة بالإصدار الحالي.
 2. Restart once so everything loads: `/exit`, then `claude`.
    أعد التشغيل مرة واحدة: `/exit` ثم `claude`.
@@ -210,12 +210,12 @@ If you hit an error that is not listed, open an issue with the exact message: ht
 Inside Claude Code:
 
 ```
-/plugin marketplace update persistent-memory-marketplace
+/plugin marketplace update samkari-plugins
 /reload-plugins
 ```
 
 Or `/plugin` → Installed → persistent-memory → **Update now**.
 أو `/plugin` ← Installed ← persistent-memory ← **Update now**.
 
-To uninstall: `/plugin` → Installed → persistent-memory → **Uninstall**. To remove the marketplace as well: `/plugin` → Marketplaces → persistent-memory-marketplace → **Remove marketplace**. Your memory files are in your own storage and are never touched by uninstalling.
+To uninstall: `/plugin` → Installed → persistent-memory → **Uninstall**. To remove the marketplace as well: `/plugin` → Marketplaces → samkari-plugins → **Remove marketplace**. Your memory files are in your own storage and are never touched by uninstalling.
 للإزالة: `/plugin` ← Installed ← **Uninstall**. ملفات الذاكرة في تخزينك الخاص ولا تتأثر بالإزالة.
