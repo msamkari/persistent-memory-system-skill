@@ -1,12 +1,22 @@
 {
   "name": "samkari-plugins",
-  "owner": { "name": "Mohammad Samkari" },
+  "owner": {
+    "name": "Mohammad Samkari"
+  },
   "description": "Mohammad Samkari's Claude plugins marketplace: a growing collection of plugins and projects.",
   "plugins": [
     {
       "name": "persistent-memory",
       "source": "./plugins/persistent-memory",
       "description": "Build and run a Persistent Memory System for long-running projects so Claude stops asking you to re-explain context."
+    },
+    {
+      "name": "structured-handover",
+      "source": {
+        "source": "github",
+        "repo": "msamkari/structured-handover-doc-skill"
+      },
+      "description": "Turn scattered context into a unified, shareable Structured Handover Document (case, project, or trip)."
     }
   ]
 }
