@@ -12,7 +12,10 @@
     },
     {
       "name": "structured-handover",
-      "source": "./plugins/structured-handover",
+      "source": {
+        "source": "github",
+        "repo": "msamkari/structured-handover-doc-skill"
+      },
       "description": "Turn scattered context into a unified, shareable Structured Handover Document (case, project, or trip)."
     }
   ]
