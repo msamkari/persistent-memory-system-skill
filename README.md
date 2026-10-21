@@ -23,6 +23,12 @@ Skills work in claude.ai, Cowork and Claude Code; hooks and agents work in Cowor
 /plugin install persistent-memory@samkari-plugins
 ```
 
+To add the handover plugin as well:
+
+```
+/plugin install structured-handover@samkari-plugins
+```
+
 **Requirements:** a Claude subscription, **Git** and **Node.js**. The full step-by-step guide (Windows, macOS, Linux, installing Git and Node.js, auto-update, troubleshooting) is in [`INSTALL.md`](INSTALL.md) — دليل التثبيت التفصيلي بالعربية والإنجليزية.
 
 For claude.ai upload and full details, see [`plugins/persistent-memory/README.md`](plugins/persistent-memory/README.md). The plugin's unit tests run on Linux, Windows and macOS through GitHub Actions (`.github/workflows/plugin-test.yml`).
