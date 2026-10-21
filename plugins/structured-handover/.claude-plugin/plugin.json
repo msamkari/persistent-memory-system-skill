@@ -1,9 +1,0 @@
-{
-  "name": "structured-handover",
-  "version": "0.1.0",
-  "description": "Build a Structured Handover Document: turn scattered context (messages, documents, images) about a case, project or trip into one unified, shareable handover doc.",
-  "homepage": "https://github.com/msamkari/persistent-memory-system-skill",
-  "repository": "https://github.com/msamkari/persistent-memory-system-skill",
-  "keywords": ["handover", "handoff", "documentation"],
-  "author": { "name": "Mohammad Samkari", "url": "https://github.com/msamkari" }
-}
