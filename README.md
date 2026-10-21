@@ -6,37 +6,20 @@ A persistent, external memory system for any long-running project — freelance 
 
 This repository hosts the source, packaged releases, and test evidence for the Persistent Memory System Skill, developed and maintained by Mohammad Samkari.
 
-## Claude Code plugin (new)
+## Claude Code plugin
 
-The same Skill is now also available as a plugin named `persistent-memory`, in `plugins/persistent-memory/` (version 0.4.1, Apache-2.0). It bundles the unchanged v8.1 Skill (byte-identical to the root `SKILL.md`) with:
+The Skill is also available as the `persistent-memory` plugin (session-start hook, `memory-doctor`, `memory-lint`, `memory-status`, `memory-pending`, and a read-only `memory-verifier` agent). It now lives in its own repository: [msamkari/persistent-memory-plugin](https://github.com/msamkari/persistent-memory-plugin), which also holds the full install guide (`INSTALL.md`).
 
-- a read-only **session-start hook** (Node, cross-platform) that gives Claude a short index of your memory folder (file names and dates only);
-- `memory-doctor` and `memory-lint` — deterministic, fail-closed health and consistency checks for your memory files (`memory-lint --apply` only fixes unique path typos, and archives the old file first);
-- `memory-status` and `memory-pending` skills, and a read-only `memory-verifier` agent that audits your files for contradictions without writing anything.
-
-Skills work in claude.ai, Cowork and Claude Code; hooks and agents work in Cowork and Claude Code only.
-
-**Install in Claude Code:**
+**Install in Claude Code** (from the [samkari-plugins](https://github.com/msamkari/samkari-plugins) marketplace):
 
 ```
-/plugin marketplace add msamkari/persistent-memory-system-skill
+/plugin marketplace add msamkari/samkari-plugins
 /plugin install persistent-memory@samkari-plugins
 ```
-
-To add the handover plugin as well:
-
-```
-/plugin install structured-handover@samkari-plugins
-```
-
-**Requirements:** a Claude subscription, **Git** and **Node.js**. The full step-by-step guide (Windows, macOS, Linux, installing Git and Node.js, auto-update, troubleshooting) is in [`INSTALL.md`](INSTALL.md) — دليل التثبيت التفصيلي بالعربية والإنجليزية.
-
-For claude.ai upload and full details, see [`plugins/persistent-memory/README.md`](plugins/persistent-memory/README.md). The plugin's unit tests run on Linux, Windows and macOS through GitHub Actions (`.github/workflows/plugin-test.yml`).
 
 ## Repository contents
 
 - `SKILL.md` — the current version (v8.1) of the Skill. This is the file that actually gets uploaded to Claude (Settings > Capabilities > Skills).
-- `plugins/persistent-memory/` and `.claude-plugin/marketplace.json` — the Claude Code plugin and its marketplace entry (see the section above).
 - `evals/evals.json` — definition of the five original scenarios (v1) used in the Skill's first test round.
 - `releases/` — packaged Skill versions (`.skill`, zip files ready for direct upload):
   - `persistent-memory-system.skill` — v1 (first version, 5-scenario test: 100% vs. 50.3% in the 5 scenarios we tested (10 agent runs); see Version history below for the baseline caveat).
@@ -84,7 +67,7 @@ Upload `SKILL.md` to your Claude account (Settings > Capabilities > Skills > Upl
 
 The standalone Skill in this repository's root (`SKILL.md` and the packaged releases) is source-available under PolyForm Noncommercial 1.0.0. Free for personal and other non-commercial use. See `LICENSE` for the full terms.
 
-The Claude Code plugin in `plugins/persistent-memory/` is licensed under Apache-2.0 (see `plugins/persistent-memory/LICENSE` and `NOTICE`).
+The Claude Code plugin is in its own repository and is licensed under Apache-2.0 (see [persistent-memory-plugin](https://github.com/msamkari/persistent-memory-plugin)).
 
 Commercial use requires a separate license from the author. To discuss one, open an Issue (please don't post confidential details or personal contact information there; I'll reply with a way to continue privately).
 
